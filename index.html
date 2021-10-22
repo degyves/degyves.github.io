@@ -43,6 +43,38 @@ body {
   0 0 9px lightgray;
   }
 
+
+table {
+  border-spacing: 0;
+}
+td,
+th {
+  padding: 0.5em;
+}
+th {
+  font-weight: bold;
+  text-align: left;
+}
+thead th {
+      background-color: #999;
+  color: white;
+}
+td > div {
+  float: right;
+}
+@media only screen and (max-width: 40em) {
+  thead th:not(:first-child) {
+    display: none;
+  }
+  td, th {
+    display: block;
+    clear: both;
+  }
+  td[data-th]:before {
+    content: attr(data-th);
+    float: left;
+  }
+}
         </style>
     </head>
     <body>
@@ -53,7 +85,7 @@ body {
         <table>
             <tr>
 
-                <td valign="top">
+                <td valign="top" >
                     <h2>Quick info</h2>
                     <h3>Sample CV (too long!)</h3>
                     <ul>
@@ -74,7 +106,7 @@ body {
                     </div>
                 </td>
 
-                <td valigin="top">
+                <td valign="top" >
                     <h2>Articles</h2>
                     <h3>Seminar: "Opportunities for remote jobs on software development in the US"</h3>
                     <div>
