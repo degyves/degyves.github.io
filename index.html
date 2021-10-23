@@ -5,10 +5,8 @@
         <title>Victor Polo's Web Page</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Yellowtail">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abel">
-        <link rel="stylesheet" type="text/css" href="css/style.css"> 
+        <link rel="stylesheet" type="text/css" href="css/style.css">
         <script type="text/javascript" src="js/app.js"></script>
-        <style type="text/css">
-        </style>
     </head>
     <body>
         <div style="margin-left: 1rem; max-width: 600px">
@@ -22,9 +20,9 @@
                     <td>
                         <img src="images/photo-small.png" height=60 />
                     </td>
-                    <td>Data Fabric Expert. AWS Certified Developer. Expert on Data 
-                        Stores ranging from SQL, Full Text Search, Document Stores, 
-                        Triplestores and Graph Stores. Extremely Strong on Java, 
+                    <td>Data Fabric Expert. AWS Certified Developer. Expert on Data
+                        Stores ranging from SQL, Full Text Search, Document Stores,
+                        Triplestores and Graph Stores. Extremely Strong on Java,
                         Python and JavaScript.
                     </td>
                 </tr>
@@ -33,75 +31,80 @@
 
         <section class="cards" >
 
-            <article>
+            <article class="card">
                 <h2>Quick info</h2>
-                <h3>Fields of Interest</h3>
-                        <ul style=font-size:0.9rem>
-                            <li class="fields">Java/JavaEE/Spring</li>
-                            <li class="fields">Javascript/Node.js/Express/Puppeteer/Vue.js/React.js</li>
-                            <li class="fields">Python/Flask-RestX/Django</li>
-                            <li class="fields">AWS EC2/Lambda/S3/SNS</li>
-                            <li class="fields">PostgreSQL/SQLServer/Oracle/MySQL</li>
-                            <li class="fields">MongoDB/ElasticSearch/Solr/Lucene</li>
-                            <li class="fields">RDF/Jena/TinkerPop/Gremlin/Neo4J</li>
-                            <li class="fields">Active Directory, Web Scrapers</li>
-                            <li class="fields">Linux, BSD, Windows Server, Bash, Powershell</li>
-                        </ul>
-                        <!-- img src="images/happyFace2.png" height=800/ -->
-                        <h3>Sample CV (long version!)</h3>
-                        <ul>
-                            <li>
-                                <a href="https://docs.google.com/document/d/1WE0yTUeV4oRJKdncSUE2BZLUKAiK9wTT12oF_tyz90M/edit?usp=sharing">
-                                    Sample CV (very long, I suggest you use 2 pages max)</a>
-                            </li>
-                        </ul>
-                        <h2>Other Links</h2>
-                        <div>
-                            <ul>
-                                <li><img src="images/talent-logo.svg" height=22 /> My profile at the <a href="https://stackoverflow.com/users/6748042/">Stack Overflow Web Site</a> (more than 1,000 of reputation!)</li>
-                                <li><img src="images/GitHub-Mark-32px.png" height=18 /> Want to <a href="https://github.com/degyves">see my Github repos?</a> Most of these are private btw.</li>
-                                <li><img src="images/li-logo-original.svg" height=16 /> You can <a href="https://www.linkedin.com/in/degyvesmontero">contact me via LinkedIn</a> as well</li>
-                                <li><img src="images/oaxacode-small.png" height=24 /> I'm the <a href="fb.me/oaxacode">Chairman of Oaxacode!</a></li>
-                                <li><img src="images/awscertdev-small.png" height=28 /> Verify my <a href="https://www.credly.com/badges/e99de62f-8127-456b-aada-14c2d5ba4fca/public_url">AWS Certified Developer Badge</a></li>
-                                <li>This is my <a href="https://sites.google.com/site/degyves/">old homepage</a></li>
-                            </ul>
-                        </div>
+                <h3>Fields of Interest & CV</h3>
+                <ul>
+                    <li>
+                <h4><a href="#" onclick="event.preventDefault();onClickFieldsOfInterest()" >(Short, Text Version)</a></h4>
+                    <div id="fieldsOfInterest" style='display: none' >
+                        Java, JavaEE, Spring, 
+                        Javascript, Node.js, Express, Puppeteer, Vue.js, React.js, 
+                        Python, Flask-RestX, Django, 
+                        AWS EC2, Lambda, S3, SNS, 
+                        PostgreSQL, SQLServer, Oracle, MySQL, 
+                        MongoDB, ElasticSearch, Solr, Lucene, 
+                        RDF, Jena, TinkerPop/Gremlin, Neo4J, 
+                        Active Directory, Web Scrapers, 
+                        Linux, BSD, Windows Server, Bash, Powershell
+                    </div>
+                </li>
+                <li>
+                    <h4><a href="#" onclick="openTagCloud()">(TagCloud Version)</a></h4>
+                    <img id="tagCloud" style='display: none' onclick="openTagCloud()" src="images/tagcloud.png" width="100%" />
+                </li>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/1WE0yTUeV4oRJKdncSUE2BZLUKAiK9wTT12oF_tyz90M/edit?usp=sharing">
+                            Sample CV (very long, I suggest you use 2 pages max)</a>
+                    </li>
+                </ul>
+                <h2>Other Links</h2>
+                <div>
+                    <ul>
+                        <li><a target="_blank" rel="noopener noreferrer" href="https://stackoverflow.com/users/6748042/"><img src="images/talent-logo.svg" style="height:2rem" />More than 1,000 reputation on Stack Overflow Web Site</a></li>
+                        <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/degyves"><img src="images/GitHub-Mark-32px.png" style="height:2rem" />See my Github repos</a> Most of these are private btw.</li>
+                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/degyvesmontero"><img src="images/li-logo-original.svg" style="height:2rem" />Contact me via LinkedIn</a></li>
+                        <li><a target="_blank" rel="noopener noreferrer" href="https://fb.me/oaxacode"><img src="images/oaxacode-small.png" style="height:2rem" />I'm the Chairman of Oaxacode!</a></li>
+                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.credly.com/badges/e99de62f-8127-456b-aada-14c2d5ba4fca/public_url"><img src="images/awscertdev-small.png" style="height:3rem" />AWS Certified Developer Badge</a></li>
+                        <li><a target="_blank" rel="noopener noreferrer" href="https://sites.google.com/site/degyves/">Old homepage</a></li>
+                    </ul>
+                </div>
             </article>
 
-            <article>
+            <article class="card">
                 <h2>Articles</h2>
                 <h3>Seminar: "Opportunities for remote jobs on software development in the US"</h3>
                 <div>
                     <ul>
-                        <li><a href="OportunidadesParaDesarrollarSoftwareEnEEUUTrabajandoEnModoRemoto.pdf">Oportunidades para desarrollar software en EEUU Trabajando en modo Remoto (Slides)</a></li>
-                        <li><a href="http://148.204.64.153:8080/share.cgi?ssid=0k74KkA&ep=&fid=0k74KkA&open=normal">Video</a></li>
+                        <li><a target="_blank" rel="noopener noreferrer" href="OportunidadesParaDesarrollarSoftwareEnEEUUTrabajandoEnModoRemoto.pdf">Oportunidades para desarrollar software en EEUU Trabajando en modo Remoto (Slides)</a></li>
+                        <li><a target="_blank" rel="noopener noreferrer" href="http://148.204.64.153:8080/share.cgi?ssid=0k74KkA&ep=&fid=0k74KkA&open=normal">Video</a></li>
                     </ul>
                 </div>
                 <h3>Fastest, emergency CI/CD with Vim and SSH!</h3>
                 <ul>
-                    <li><a href="https://www.linkedin.com/pulse/fastest-emergency-cicd-vim-ssh-v%C3%ADctor-polo-de-gyv%C3%A9s-montero">Fastest, emergency CI/CD with Vim and SSH!</a></li>
+                    <li><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/pulse/fastest-emergency-cicd-vim-ssh-v%C3%ADctor-polo-de-gyv%C3%A9s-montero">Fastest, emergency CI/CD with Vim and SSH!</a></li>
                 </ul>
                 <h3>Successfully asking questions working with a remote team</h3>
                 <ul>
-                    <li><a href="https://www.linkedin.com/pulse/successfully-asking-questions-remote-team-de-gyv%C3%A9s-montero/">Cómo hacer preguntas inteligentes trabajando a distancia</a></li>
+                    <li><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/pulse/successfully-asking-questions-remote-team-de-gyv%C3%A9s-montero/">Cómo hacer preguntas inteligentes trabajando a distancia</a></li>
                 </ul>
                 <h3>Publications</h3>
                 <ul>
-                    <li><a href="https://dialnet.unirioja.es/descarga/articulo/2521860.pdf">RED DE REPOSITORIOS DIGITALES PARA DISEMINACION DE INFORMACION</a></li>
-                    <li><a href="https://link.springer.com/chapter/10.1007%2F978-3-540-25958-9_25">A Distributed Digital Text Accessing and Acquisition System</a></li>
-                    <li><a href="https://link.springer.com/chapter/10.1007/11533962_3">Springer publication: Extending Databases to Precison-Controlled Retrieval of Qualitative Information</a></li>
-                    <li><a href="https://www.semanticscholar.org/paper/Measuring-the-confusion-between-two-qualitative-in-Guzm%C3%A1n-Arenas-Levachkine/5872553f0eac1e3ff6ed16efec0e17ccb07abba9">Measuring the confusion between two qualitative values organized in hierarchies</a></li>
-                    <li><a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.106.1120">The Semantics of Confusion in Hierarchies: Theory and Practice</a></li>
+                    <li><a target="_blank" rel="noopener noreferrer" href="https://dialnet.unirioja.es/descarga/articulo/2521860.pdf">RED DE REPOSITORIOS DIGITALES PARA DISEMINACION DE INFORMACION</a></li>
+                    <li><a target="_blank" rel="noopener noreferrer" href="https://link.springer.com/chapter/10.1007%2F978-3-540-25958-9_25">A Distributed Digital Text Accessing and Acquisition System</a></li>
+                    <li><a target="_blank" rel="noopener noreferrer" href="https://link.springer.com/chapter/10.1007/11533962_3">Springer publication: Extending Databases to Precison-Controlled Retrieval of Qualitative Information</a></li>
+                    <li><a target="_blank" rel="noopener noreferrer" href="https://www.semanticscholar.org/paper/Measuring-the-confusion-between-two-qualitative-in-Guzm%C3%A1n-Arenas-Levachkine/5872553f0eac1e3ff6ed16efec0e17ccb07abba9">Measuring the confusion between two qualitative values organized in hierarchies</a></li>
+                    <li><a target="_blank" rel="noopener noreferrer" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.106.1120">The Semantics of Confusion in Hierarchies: Theory and Practice</a></li>
                 </ul>
             </article>
 
         </section>
 
-<div class="container">
-  <div class="chevron"></div>
-  <div class="chevron"></div>
-  <div class="chevron"></div>
-</div>
+        <div class="scrollers">
+            <div class="chevron"></div>
+            <div class="chevron"></div>
+            <div class="chevron"></div>
+        </div>
 
         <div>
             <center><i style=font-size:0.6rem>Created with a bit of &nbsp;<img src="images/8bitlove.png" height=15rem /> using NeoVim/VanillaHTML+CSS</i></center>
