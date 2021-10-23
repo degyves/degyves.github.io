@@ -31,7 +31,7 @@
 
         <section class="cards" >
 
-            <article class="card">
+            <article>
                 <h2>Quick info</h2>
                 <h3>Fields of Interest & CV</h3>
                 <ul>
@@ -50,8 +50,12 @@
                     </div>
                 </li>
                 <li>
-                    <h4><a href="#" onclick="openTagCloud()">(TagCloud Version)</a></h4>
-                    <img id="tagCloud" style='display: none' onclick="openTagCloud()" src="images/tagcloud.png" width="100%" />
+                    <h4><a href="#" onclick="event.preventDefault();onClickTagCloud()">(TagCloud Version)</a></h4>
+                    <div id="tagCloud" style='display:none'>
+                        <img id="imgTagCloud" style='display: inline' onclick="event.preventDefault();openTagCloud()" data-src="images/tagcloud-small.png" width="100vw" />
+                        <br/>
+                        (Click to zoom the image)
+                    </div>
                 </li>
                     <li>
                         <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/1WE0yTUeV4oRJKdncSUE2BZLUKAiK9wTT12oF_tyz90M/edit?usp=sharing">
@@ -71,7 +75,7 @@
                 </div>
             </article>
 
-            <article class="card">
+            <article>
                 <h2>Articles</h2>
                 <h3>Seminar: "Opportunities for remote jobs on software development in the US"</h3>
                 <div>

@@ -16,6 +16,9 @@ var onClickFieldsOfInterest = function(){
 
 var onClickTagCloud = function(){
     var tagCloud = document.getElementById('tagCloud');
+    var imgTagCloud = document.getElementById('imgTagCloud');
+    //console.log("data-src: "tagCloud.data-src);
+    imgTagCloud.src = imgTagCloud.getAttribute("data-src");
     if( tagCloud.style.display == 'none'){
         tagCloudToggle = 'inline';
     }else{
@@ -26,7 +29,7 @@ var onClickTagCloud = function(){
 }
 
 var openTagCloud = function(){
-    url = 'images/tagcloud.png';
+    url = 'images/original/tagcloud.png';
     img = '<img src="'+url+'">';
     popup = window.open();
     popup.document.write(img);                        
