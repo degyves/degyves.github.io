@@ -1,0 +1,19 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="200" height="200" rx="20" ry="20" fill="#282c34" />
+
+  <!-- Staff lines -->
+  <line x1="30" y1="60" x2="170" y2="60" stroke="white" stroke-width="2" />
+  <line x1="30" y1="80" x2="170" y2="80" stroke="white" stroke-width="2" />
+  <line x1="30" y1="100" x2="170" y2="100" stroke="white" stroke-width="2" />
+  <line x1="30" y1="120" x2="170" y2="120" stroke="white" stroke-width="2" />
+  <line x1="30" y1="140" x2="170" y2="140" stroke="white" stroke-width="2" />
+
+  <!-- G Clef symbol -->
+  <text x="85" y="130" font-family="Arial" font-size="100" fill="#61dafb" transform="rotate(-10, 100, 100)">𝄞</text>
+
+  <!-- Text -->
+  <text x="40" y="180" fill="white" font-family="Arial" font-size="18">Transpose</text>
+  <text x="40" y="200" fill="white" font-family="Arial" font-size="14">Chords App</text>
+</svg>
+

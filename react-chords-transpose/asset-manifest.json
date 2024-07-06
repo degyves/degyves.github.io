@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/react-chords-transpose/static/css/main.26990748.css",
+    "main.js": "/react-chords-transpose/static/js/main.ec2889d0.js",
+    "static/js/453.38324fbf.chunk.js": "/react-chords-transpose/static/js/453.38324fbf.chunk.js",
+    "static/media/logo2.svg": "/react-chords-transpose/static/media/logo2.8ba18a9b37a3720aa1cbe6600d45c59c.svg",
+    "index.html": "/react-chords-transpose/index.html",
+    "main.26990748.css.map": "/react-chords-transpose/static/css/main.26990748.css.map",
+    "main.ec2889d0.js.map": "/react-chords-transpose/static/js/main.ec2889d0.js.map",
+    "453.38324fbf.chunk.js.map": "/react-chords-transpose/static/js/453.38324fbf.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.26990748.css",
+    "static/js/main.ec2889d0.js"
+  ]
+}
