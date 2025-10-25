@@ -126,6 +126,37 @@ body {
   margin-bottom: 2rem;
 }
 
+/* Who am I card special styling */
+.whoami-card {
+  grid-column: 1 / -1; /* Span full width */
+}
+
+.intro-cards-container {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .intro-cards-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.whoami-card .intro-card {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.about-text {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
 .card {
   background: rgba(255, 255, 255, 0.45);
   border-radius: 20px;
@@ -197,30 +228,6 @@ li {
 
 .social-links img {
   vertical-align: middle;
-}
-
-/* Custom Cognizant C logo */
-.cognizant-logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  background: linear-gradient(135deg, #003087 0%, #0066cc 100%);
-  color: white;
-  font-family: "Inter", sans-serif;
-  font-weight: 700;
-  font-size: 1.4rem;
-  border-radius: 6px;
-  margin-right: 0.5rem;
-  text-decoration: none;
-  box-shadow: 0 2px 8px rgba(0, 48, 135, 0.3);
-  transition: all 0.3s ease;
-}
-
-.cognizant-logo:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 48, 135, 0.4);
 }
 
 .article-section {
@@ -316,7 +323,7 @@ a:hover {
 .permalink {
   opacity: 0;
   margin-left: 0.5rem;
-  font-size: 0.8em;
+  font-size: 1.1em;
   color: #64748b !important;
   text-decoration: none !important;
   transition: opacity 0.3s ease, color 0.3s ease;
