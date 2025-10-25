@@ -231,13 +231,18 @@ li {
 }
 
 .article-section {
-  margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .article-section:last-child {
   border-bottom: none;
+}
+
+.article-section h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
 }
 
 /* Quick info section two-column layout */
