@@ -52,24 +52,11 @@ document.addEventListener('readystatechange', event => {
     if (event.target.readyState === "interactive") {   //does same as:  ..addEventListener("DOMContentLoaded"..
     }
 
-    // When window loaded ( external resources are loaded too- `css`,`src`, etc...) 
+    // When window loaded ( external resources are loaded too- `css`,`src`, etc...)
     if (event.target.readyState === "complete") {
         scrollersStyleDisplay = document.querySelector('.scrollers').style.display;
-        resizeCards();
     }
 });
-
-var resizeCards = function () {
-    var width = screen.width * 0.9
-    Array.from(
-    document.querySelectorAll('.cards') ).map( card =>
-        card.setAttribute('style',' \
-        padding: 1rem; \
-        display: grid; \
-        grid-template-columns: repeat(auto-fit, minmax('+width+'px, 1fr)); \
-        grid-gap: 1rem;')
-    );
-}
 
 document.onscroll = function() {
     if (window.innerHeight + window.scrollY >=
