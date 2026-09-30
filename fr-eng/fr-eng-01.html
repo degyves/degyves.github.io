@@ -4,7 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Guía Maestra de Verbos Pilares (80/20)</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗣️</text></svg>">
+<meta name="theme-color" content="#2c3e50">
+<meta name="description" content="Presente, pasado y futuro de être, avoir, besoin y aller (y to be, have, need, go) con pronunciación y audio.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Verbos">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="Verbos Pilares">
+<meta property="og:title" content="Guía Maestra de Verbos Pilares (80/20)">
+<meta property="og:description" content="Francés e inglés: ser, tener, necesitar, ir. Presente, pasado y futuro con pronunciación y audio.">
+<meta property="og:url" content="https://degyves.github.io/fr-eng/fr-eng-01.html">
+<meta property="og:image" content="https://degyves.github.io/fr-eng/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Guía Maestra de Verbos Pilares: français y English">
+<meta name="twitter:card" content="summary_large_image">
+
 <style>
 :root{--bg:#f4f7f6;--card:#fff;--text:#333;--head:#2c3e50;--blue:#3498db;--blue-d:#2980b9;--grey:#7f8c8d;--th:#34495e;--line:#e0e0e0;--hover:#f9fbfb;--orange:#e67e22;--chip:#eaf2f8;--shadow:rgba(0,0,0,.05)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12181d;--card:#1b242b;--text:#d5dde2;--head:#ecf1f4;--blue:#4aa8e8;--blue-d:#6bb9f0;--grey:#93a3ab;--th:#2b3c4b;--line:#2c3943;--hover:#212c34;--orange:#f0994a;--chip:#22313d;--shadow:rgba(0,0,0,.3)}}
@@ -30,6 +51,10 @@ th{background:var(--th);color:#fff;font-weight:600;text-transform:uppercase;font
 tr:hover td{background:var(--hover)}
 .verb-text{font-weight:bold;color:var(--head);display:block;font-size:15px}
 .pronun{color:var(--orange);font-style:italic;display:block;font-size:13px;margin-top:4px;font-weight:500}
+.notice{display:none;align-items:flex-start;gap:10px;background:var(--chip);border-left:4px solid var(--orange);border-radius:8px;padding:10px 12px;margin:14px 0 0;font-size:14px;color:var(--head)}
+.notice.show{display:flex}
+.notice p{margin:0;flex:1}
+.notice button{font:inherit;cursor:pointer;border:0;background:none;color:var(--grey);font-size:20px;line-height:1;padding:0 4px}
 .hint{font-size:13px;color:var(--grey);margin:14px 0 0;display:none}
 .can-speak .hint{display:block}
 .can-speak td[data-say]{cursor:pointer}
@@ -58,6 +83,7 @@ td[data-say]:focus-visible{outline:3px solid var(--blue);outline-offset:-3px}
     <div class="seg" id="tense" role="group" aria-label="Tiempo"></div>
     <div class="seg verbs" id="verbs" role="group" aria-label="Verbo"></div>
   </div>
+  <div class="notice" id="notice" role="status"><p id="noticeTxt"></p><button type="button" id="noticeX" aria-label="Cerrar aviso">×</button></div>
   <p class="hint">Toca una celda para escuchar la pronunciación.</p>
   <h3 id="ttl"></h3>
   <div class="tbl-wrap"><table><thead id="thead"></thead><tbody id="tbody"></tbody></table></div>
@@ -75,6 +101,11 @@ function pickVoice(loc){
 }
 // Solo para la voz: "Il / Elle est" -> "Il est" (el texto en pantalla no cambia)
 function speakable(s){ return s.replace(/^(\S+) \/ \S+ /,'$1 '); }
+const IN_APP = /FBAN|FBAV|Instagram|WhatsApp|Line\/|; wv\)/i.test(navigator.userAgent);
+function notice(msg){ document.getElementById('noticeTxt').textContent = msg; document.getElementById('notice').classList.add('show'); }
+document.getElementById('noticeX').onclick = ()=>document.getElementById('notice').classList.remove('show');
+const OPEN_HINT = ' Si abriste esta página desde WhatsApp u otra app, ábrela en Safari o Chrome (menú ⋯ → «Abrir en el navegador»).';
+if (!CAN_SPEAK) notice('Este navegador no permite reproducir audio de pronunciación.' + OPEN_HINT);
 let lastCell = null;
 function speak(td){
   speechSynthesis.cancel();
@@ -83,8 +114,13 @@ function speak(td){
   u.lang = loc; u.rate = 0.85;
   const v = pickVoice(loc); if (v) u.voice = v;
   td.classList.add('speaking'); lastCell = td;
-  u.onend = u.onerror = ()=>td.classList.remove('speaking');
+  let started = false;
+  u.onstart = ()=>{ started = true; };
+  u.onend = ()=>td.classList.remove('speaking');
+  u.onerror = ()=>{ td.classList.remove('speaking'); notice('No se pudo reproducir el audio.' + OPEN_HINT); };
   speechSynthesis.speak(u);
+  setTimeout(()=>{ if (!started && !speechSynthesis.speaking) { td.classList.remove('speaking'); notice('No se escuchó nada: este dispositivo quizá no tiene voz en ' + (st.l===0?'francés':'inglés') + ' o el navegador bloquea el audio.' + OPEN_HINT); } }, 2000);
+  if (!v && IN_APP) notice('Estás en el navegador de una app.' + OPEN_HINT);
 }
 if (CAN_SPEAK) speechSynthesis.onvoiceschanged = ()=>{};
 let st = {l:0,t:0,v:0};
@@ -129,6 +165,9 @@ function render(){
   });
 }
 render();
+if ('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')) {
+  window.addEventListener('load', ()=>{ navigator.serviceWorker.register('sw.js').catch(()=>{}); });
+}
 </script>
 </body>
 </html>
