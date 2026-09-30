@@ -179,12 +179,6 @@ body {
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 1024px) {
-  .intro-cards-container {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
 .whoami-card .intro-card {
   background: rgba(255, 255, 255, 0.3);
   border-radius: 16px;
