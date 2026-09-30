@@ -1,355 +1,134 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía Maestra de Verbos Pilares (80/20)</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
-        .container { max-width: 1100px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        h1 { text-align: center; color: #2c3e50; font-size: 28px; margin-bottom: 30px; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
-        h2 { color: #2980b9; margin-top: 40px; border-left: 5px solid #3498db; padding-left: 10px; padding-bottom: 2px; }
-        h3 { color: #7f8c8d; font-size: 18px; margin-top: 25px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
-        table { width: 100%; border-collapse: collapse; margin-bottom: 35px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.02); border-radius: 8px; overflow: hidden; }
-        th, td { padding: 12px 15px; text-align: left; border: 1px solid #e0e0e0; vertical-align: top; }
-        th { background-color: #34495e; color: white; font-weight: 600; text-transform: uppercase; font-size: 13px; }
-        tr:hover { background-color: #f9fbfb; }
-        .verb-text { font-weight: bold; color: #2c3e50; display: block; font-size: 15px; }
-        .pronun { color: #e67e22; font-style: italic; display: block; font-size: 13px; margin-top: 4px; font-weight: 500; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guía Maestra de Verbos Pilares (80/20)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗣️</text></svg>">
+<style>
+:root{--bg:#f4f7f6;--card:#fff;--text:#333;--head:#2c3e50;--blue:#3498db;--blue-d:#2980b9;--grey:#7f8c8d;--th:#34495e;--line:#e0e0e0;--hover:#f9fbfb;--orange:#e67e22;--chip:#eaf2f8;--shadow:rgba(0,0,0,.05)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12181d;--card:#1b242b;--text:#d5dde2;--head:#ecf1f4;--blue:#4aa8e8;--blue-d:#6bb9f0;--grey:#93a3ab;--th:#2b3c4b;--line:#2c3943;--hover:#212c34;--orange:#f0994a;--chip:#22313d;--shadow:rgba(0,0,0,.3)}}
+:root[data-theme="dark"]{--bg:#12181d;--card:#1b242b;--text:#d5dde2;--head:#ecf1f4;--blue:#4aa8e8;--blue-d:#6bb9f0;--grey:#93a3ab;--th:#2b3c4b;--line:#2c3943;--hover:#212c34;--orange:#f0994a;--chip:#22313d;--shadow:rgba(0,0,0,.3)}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--bg);color:var(--text);margin:0;padding:calc(20px + env(safe-area-inset-top,0px)) 20px calc(20px + env(safe-area-inset-bottom,0px))}
+.container{max-width:1100px;margin:0 auto;background:var(--card);padding:30px;border-radius:12px;box-shadow:0 4px 15px var(--shadow)}
+h1{text-align:center;color:var(--head);font-size:28px;margin:0 0 24px;border-bottom:3px solid var(--blue);padding-bottom:10px}
+h3{color:var(--grey);font-size:18px;margin:22px 0 14px;text-transform:uppercase;letter-spacing:1px}
+.controls{display:flex;flex-direction:column;gap:12px;margin-bottom:6px}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{font:inherit;font-size:15px;font-weight:600;cursor:pointer;border:2px solid var(--line);background:var(--card);color:var(--head);padding:9px 18px;border-radius:999px;flex:1 1 0;min-width:0;white-space:nowrap}
+.seg button:hover{border-color:var(--blue)}
+.seg button[aria-pressed="true"]{background:var(--blue-d);border-color:var(--blue-d);color:#fff}
+.seg button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.seg.verbs{display:none}
+.seg.verbs button{font-size:14px;padding:8px 10px;border-radius:10px;white-space:normal;line-height:1.25}
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;background:var(--card);box-shadow:0 2px 5px var(--shadow);border-radius:8px;overflow:hidden}
+th,td{padding:12px 15px;text-align:left;border:1px solid var(--line);vertical-align:top}
+th{background:var(--th);color:#fff;font-weight:600;text-transform:uppercase;font-size:13px}
+tr:hover td{background:var(--hover)}
+.verb-text{font-weight:bold;color:var(--head);display:block;font-size:15px}
+.pronun{color:var(--orange);font-style:italic;display:block;font-size:13px;margin-top:4px;font-weight:500}
+.hint{font-size:13px;color:var(--grey);margin:14px 0 0;display:none}
+.can-speak .hint{display:block}
+.can-speak td[data-say]{cursor:pointer}
+.can-speak td[data-say]:hover{background:var(--chip)}
+td.speaking{background:var(--chip);box-shadow:inset 4px 0 0 var(--orange)}
+td[data-say]:focus-visible{outline:3px solid var(--blue);outline-offset:-3px}
+@media (max-width:760px){
+  body{padding-left:10px;padding-right:10px}
+  .container{padding:18px 14px}
+  h1{font-size:22px}
+  h3{font-size:15px}
+  .seg.verbs{display:flex}
+  .seg.verbs button{flex:1 1 calc(50% - 6px)}
+  th,td{padding:10px 11px}
+  th:nth-child(1),td:nth-child(1){width:32%}
+  .col{display:none}
+  .col.on{display:table-cell}
+}
+</style>
 </head>
 <body>
-
 <div class="container">
-    <h1>Guía Maestra de Verbos Pilares (80/20)</h1>
-
-    <!-- ================= FRANCÉS ================= -->
-    <h2>■■ MÓDULO DE FRANCÉS</h2>
-
-    <h3>1. PRESENT (Presente)</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Pron.</th>
-                <th>ÊTRE (Ser/Estar)</th>
-                <th>AVOIR (Tener)</th>
-                <th>AVOIR BESOIN DE (Necesitar)</th>
-                <th>ALLER (Ir)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><b>Je</b></td>
-                <td><span class="verb-text">Je suis</span><span class="pronun">(ye suí)</span></td>
-                <td><span class="verb-text">J'ai</span><span class="pronun">(yé)</span></td>
-                <td><span class="verb-text">J'ai besoin de</span><span class="pronun">(yé besuán de)</span></td>
-                <td><span class="verb-text">Je vais</span><span class="pronun">(ye vé)</span></td>
-            </tr>
-            <tr>
-                <td><b>Tu</b></td>
-                <td><span class="verb-text">Tu es</span><span class="pronun">(tu é)</span></td>
-                <td><span class="verb-text">Tu as</span><span class="pronun">(tu a)</span></td>
-                <td><span class="verb-text">Tu as besoin de</span><span class="pronun">(tu a besuán de)</span></td>
-                <td><span class="verb-text">Tu vas</span><span class="pronun">(tu va)</span></td>
-            </tr>
-            <tr>
-                <td><b>Il / Elle</b></td>
-                <td><span class="verb-text">Il / Elle est</span><span class="pronun">(il / el é)</span></td>
-                <td><span class="verb-text">Il / Elle a</span><span class="pronun">(il / el a)</span></td>
-                <td><span class="verb-text">Il / Elle a besoin de</span><span class="pronun">(il / el a besuán de)</span></td>
-                <td><span class="verb-text">Il / Elle va</span><span class="pronun">(il / el va)</span></td>
-            </tr>
-            <tr>
-                <td><b>Nous</b></td>
-                <td><span class="verb-text">Nous sommes</span><span class="pronun">(nu som)</span></td>
-                <td><span class="verb-text">Nous avons</span><span class="pronun">(nuzavón)</span></td>
-                <td><span class="verb-text">Nous avons besoin de</span><span class="pronun">(nuzavón besuán de)</span></td>
-                <td><span class="verb-text">Nous allons</span><span class="pronun">(nuzalón)</span></td>
-            </tr>
-            <tr>
-                <td><b>Vous</b></td>
-                <td><span class="verb-text">Vous êtes</span><span class="pronun">(vuzét)</span></td>
-                <td><span class="verb-text">Vous avez</span><span class="pronun">(vuzavé)</span></td>
-                <td><span class="verb-text">Vous avez besoin de</span><span class="pronun">(vuzavé besuán de)</span></td>
-                <td><span class="verb-text">Vous allez</span><span class="pronun">(vuzalé)</span></td>
-            </tr>
-            <tr>
-                <td><b>Ils / Elles</b></td>
-                <td><span class="verb-text">Ils / Elles sont</span><span class="pronun">(il / el son)</span></td>
-                <td><span class="verb-text">Ils / Elles ont</span><span class="pronun">(ilzon / elzon)</span></td>
-                <td><span class="verb-text">Ils / Elles ont besoin de</span><span class="pronun">(ilzon / elzon besuán de)</span></td>
-                <td><span class="verb-text">Ils / Elles vont</span><span class="pronun">(il / el von)</span></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3>2. PASSÉ COMPOSÉ (Pasado)</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Pron.</th>
-                <th>ÊTRE (Fui/Estuve)</th>
-                <th>AVOIR (Tuve)</th>
-                <th>BESOIN (Necesité)</th>
-                <th>ALLER (Fui/Iba)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><b>Je</b></td>
-                <td><span class="verb-text">J'ai été</span><span class="pronun">(yé eté)</span></td>
-                <td><span class="verb-text">J'ai eu</span><span class="pronun">(yé u)</span></td>
-                <td><span class="verb-text">J'ai eu besoin de</span><span class="pronun">(yé u besuán de)</span></td>
-                <td><span class="verb-text">Je suis allé</span><span class="pronun">(ye suí alé)</span></td>
-            </tr>
-            <tr>
-                <td><b>Tu</b></td>
-                <td><span class="verb-text">Tu as été</span><span class="pronun">(tu a eté)</span></td>
-                <td><span class="verb-text">Tu as eu</span><span class="pronun">(tu a u)</span></td>
-                <td><span class="verb-text">Tu as eu besoin de</span><span class="pronun">(tu a u besuán de)</span></td>
-                <td><span class="verb-text">Tu es allé</span><span class="pronun">(tu é alé)</span></td>
-            </tr>
-            <tr>
-                <td><b>Il / Elle</b></td>
-                <td><span class="verb-text">Il / Elle a été</span><span class="pronun">(il / el a eté)</span></td>
-                <td><span class="verb-text">Il / Elle a eu</span><span class="pronun">(il / el a u)</span></td>
-                <td><span class="verb-text">Il / Elle a eu besoin de</span><span class="pronun">(il / el a u besuán de)</span></td>
-                <td><span class="verb-text">Il / Elle est allé</span><span class="pronun">(il / el é alé)</span></td>
-            </tr>
-            <tr>
-                <td><b>Nous</b></td>
-                <td><span class="verb-text">Nous avons été</span><span class="pronun">(nuzavón eté)</span></td>
-                <td><span class="verb-text">Nous avons eu</span><span class="pronun">(nuzavón u)</span></td>
-                <td><span class="verb-text">Nous avons eu besoin de</span><span class="pronun">(nuzavón u besuán de)</span></td>
-                <td><span class="verb-text">Nous somos allés</span><span class="pronun">(nu som zalé)</span></td>
-            </tr>
-            <tr>
-                <td><b>Vous</b></td>
-                <td><span class="verb-text">Vous avez été</span><span class="pronun">(vuzavé eté)</span></td>
-                <td><span class="verb-text">Vous avez eu</span><span class="pronun">(vuzavé u)</span></td>
-                <td><span class="verb-text">Vous avez eu besoin de</span><span class="pronun">(vuzavé u besuán de)</span></td>
-                <td><span class="verb-text">Vous êtes allés</span><span class="pronun">(vuzét zalé)</span></td>
-            </tr>
-            <tr>
-                <td><b>Ils / Elles</b></td>
-                <td><span class="verb-text">Ils / Elles ont été</span><span class="pronun">(ilzon / elzon eté)</span></td>
-                <td><span class="verb-text">Ils / Elles ont eu</span><span class="pronun">(ilzon / elzon u)</span></td>
-                <td><span class="verb-text">Ils / Elles ont eu besoin de</span><span class="pronun">(ilzon / elzon u besuán de)</span></td>
-                <td><span class="verb-text">Ils / Elles sont allés</span><span class="pronun">(il son talé)</span></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3>3. FUTUR PROCHE (Futuro Fácil)</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Pron.</th>
-                <th>Voy a ser/estar *(Être)*</th>
-                <th>Voy a tener *(Avoir)*</th>
-                <th>Voy a necesitar *(Besoin)*</th>
-                <th>Voy a ir *(Aller)*</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><b>Je</b></td>
-                <td><span class="verb-text">Je vais être</span><span class="pronun">(ye vé etr)</span></td>
-                <td><span class="verb-text">Je vais avoir</span><span class="pronun">(ye vé avuár)</span></td>
-                <td><span class="verb-text">Je vais avoir besoin de</span><span class="pronun">(ye vé avuár besuán de)</span></td>
-                <td><span class="verb-text">Je vais aller</span><span class="pronun">(ye vé alé)</span></td>
-            </tr>
-            <tr>
-                <td><b>Tu</b></td>
-                <td><span class="verb-text">Tu vas être</span><span class="pronun">(tu va etr)</span></td>
-                <td><span class="verb-text">Tu vas avoir</span><span class="pronun">(tu va avuár)</span></td>
-                <td><span class="verb-text">Tu vas avoir besoin de</span><span class="pronun">(tu va avuár besuán de)</span></td>
-                <td><span class="verb-text">Tu vas aller</span><span class="pronun">(tu va alé)</span></td>
-            </tr>
-            <tr>
-                <td><b>Il / Elle</b></td>
-                <td><span class="verb-text">Il va être</span><span class="pronun">(il va etr)</span></td>
-                <td><span class="verb-text">Il va avoir</span><span class="pronun">(il va avuár)</span></td>
-                <td><span class="verb-text">Il va avoir besoin de</span><span class="pronun">(il va avuár besuán de)</span></td>
-                <td><span class="verb-text">Il va aller</span><span class="pronun">(il va alé)</span></td>
-            </tr>
-            <tr>
-                <td><b>Nous</b></td>
-                <td><span class="verb-text">Nous allons être</span><span class="pronun">(nuzalón etr)</span></td>
-                <td><span class="verb-text">Nous allons avoir</span><span class="pronun">(nuzalón avuár)</span></td>
-                <td><span class="verb-text">Nous allons avoir besoin de</span><span class="pronun">(nuzalón avuár besuán de)</span></td>
-                <td><span class="verb-text">Nous allons aller</span><span class="pronun">(nuzalón alé)</span></td>
-            </tr>
-            <tr>
-                <td><b>Vous</b></td>
-                <td><span class="verb-text">Vous allez être</span><span class="pronun">(vuzalé etr)</span></td>
-                <td><span class="verb-text">Vous allez avoir</span><span class="pronun">(vuzalé avuár)</span></td>
-                <td><span class="verb-text">Vous allez avoir besoin de</span><span class="pronun">(vuzalé avuár besuán de)</span></td>
-                <td><span class="verb-text">Vous allez aller</span><span class="pronun">(vuzalé alé)</span></td>
-            </tr>
-            <tr>
-                <td><b>Ils / Elles</b></td>
-                <td><span class="verb-text">Ils vont être</span><span class="pronun">(il von tetr)</span></td>
-                <td><span class="verb-text">Ils vont avoir</span><span class="pronun">(il von tavuár)</span></td>
-                <td><span class="verb-text">Ils vont avoir besoin de</span><span class="pronun">(il von tavuár besuán de)</span></td>
-                <td><span class="verb-text">Ils vont aller</span><span class="pronun">(il von talé)</span></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- ================= INGLÉS ================= -->
-    <h2>■■ MÓDULO DE INGLÉS</h2>
-
-    <h3>1. PRESENT (Presente)</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Pron.</th>
-                <th>TO BE (Ser/Estar)</th>
-                <th>TO HAVE (Tener)</th>
-                <th>TO NEED (Necesitar)</th>
-                <th>TO GO (Ir)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><b>I</b></td>
-                <td><span class="verb-text">I am</span><span class="pronun">(ái am)</span></td>
-                <td><span class="verb-text">I have</span><span class="pronun">(ái jav)</span></td>
-                <td><span class="verb-text">I need</span><span class="pronun">(ái niid)</span></td>
-                <td><span class="verb-text">I go</span><span class="pronun">(ái góu)</span></td>
-            </tr>
-            <tr>
-                <td><b>You</b></td>
-                <td><span class="verb-text">You are</span><span class="pronun">(iú ar)</span></td>
-                <td><span class="verb-text">You have</span><span class="pronun">(iú jav)</span></td>
-                <td><span class="verb-text">You need</span><span class="pronun">(iú niid)</span></td>
-                <td><span class="verb-text">You go</span><span class="pronun">(iú góu)</span></td>
-            </tr>
-            <tr>
-                <td><b>He / She</b></td>
-                <td><span class="verb-text">He / She is</span><span class="pronun">(jí / shí is)</span></td>
-                <td><span class="verb-text">He / She has</span><span class="pronun">(jí / shí jas)</span></td>
-                <td><span class="verb-text">He / She needs</span><span class="pronun">(jí / shí niids)</span></td>
-                <td><span class="verb-text">He / She goes</span><span class="pronun">(jí / shí góus)</span></td>
-            </tr>
-            <tr>
-                <td><b>We</b></td>
-                <td><span class="verb-text">We are</span><span class="pronun">(uí ar)</span></td>
-                <td><span class="verb-text">We have</span><span class="pronun">(uí jav)</span></td>
-                <td><span class="verb-text">We need</span><span class="pronun">(uí niid)</span></td>
-                <td><span class="verb-text">We go</span><span class="pronun">(uí góu)</span></td>
-            </tr>
-            <tr>
-                <td><b>They</b></td>
-                <td><span class="verb-text">They are</span><span class="pronun">(déi ar)</span></td>
-                <td><span class="verb-text">They have</span><span class="pronun">(déi jav)</span></td>
-                <td><span class="verb-text">They need</span><span class="pronun">(déi niid)</span></td>
-                <td><span class="verb-text">They go</span><span class="pronun">(déi góu)</span></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3>2. PAST SIMPLE (Pasado)</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Pron.</th>
-                <th>TO BE (Fui/Estuve)</th>
-                <th>TO HAVE (Tuve)</th>
-                <th>TO NEED (Necesité)</th>
-                <th>TO GO (Fui)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><b>I</b></td>
-                <td><span class="verb-text">I was</span><span class="pronun">(ái uás)</span></td>
-                <td><span class="verb-text">I had</span><span class="pronun">(ái jad)</span></td>
-                <td><span class="verb-text">I needed</span><span class="pronun">(ái níided)</span></td>
-                <td><span class="verb-text">I went</span><span class="pronun">(ái uént)</span></td>
-            </tr>
-            <tr>
-                <td><b>You</b></td>
-                <td><span class="verb-text">You were</span><span class="pronun">(iú uer)</span></td>
-                <td><span class="verb-text">You had</span><span class="pronun">(iú jad)</span></td>
-                <td><span class="verb-text">You needed</span><span class="pronun">(iú níided)</span></td>
-                <td><span class="verb-text">You went</span><span class="pronun">(iú uént)</span></td>
-            </tr>
-            <tr>
-                <td><b>He / She</b></td>
-                <td><span class="verb-text">He / She was</span><span class="pronun">(jí / shí uás)</span></td>
-                <td><span class="verb-text">He / She had</span><span class="pronun">(jí / shí jad)</span></td>
-                <td><span class="verb-text">He / She needed</span><span class="pronun">(jí / shí níided)</span></td>
-                <td><span class="verb-text">He / She went</span><span class="pronun">(jí / shí uént)</span></td>
-            </tr>
-            <tr>
-                <td><b>We</b></td>
-                <td><span class="verb-text">We were</span><span class="pronun">(uí uer)</span></td>
-                <td><span class="verb-text">We had</span><span class="pronun">(uí jad)</span></td>
-                <td><span class="verb-text">We needed</span><span class="pronun">(uí níided)</span></td>
-                <td><span class="verb-text">We went</span><span class="pronun">(uí uént)</span></td>
-            </tr>
-            <tr>
-                <td><b>They</b></td>
-                <td><span class="verb-text">They were</span><span class="pronun">(déi uer)</span></td>
-                <td><span class="verb-text">They had</span><span class="pronun">(déi jad)</span></td>
-                <td><span class="verb-text">They needed</span><span class="pronun">(déi níided)</span></td>
-                <td><span class="verb-text">They went</span><span class="pronun">(déi uént)</span></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3>3. FUTURE WITH GOING TO (Futuro Fácil)</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Pron.</th>
-                <th>Voy a ser/estar</th>
-                <th>Voy a tener</th>
-                <th>Voy a necesitar</th>
-                <th>Voy a ir</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><b>I</b></td>
-                <td><span class="verb-text">I am going to be</span><span class="pronun">(ái am góin tu bi)</span></td>
-                <td><span class="verb-text">I am going to have</span><span class="pronun">(ái am góin tu jav)</span></td>
-                <td><span class="verb-text">I am going to need</span><span class="pronun">(ái am góin tu niid)</span></td>
-                <td><span class="verb-text">I am going to go</span><span class="pronun">(ái am góin tu góu)</span></td>
-            </tr>
-            <tr>
-                <td><b>You</b></td>
-                <td><span class="verb-text">You are going to be</span><span class="pronun">(iú ar góin tu bi)</span></td>
-                <td><span class="verb-text">You are going to have</span><span class="pronun">(iú ar góin tu jav)</span></td>
-                <td><span class="verb-text">You are going to need</span><span class="pronun">(iú ar góin tu niid)</span></td>
-                <td><span class="verb-text">You are going to go</span><span class="pronun">(iú ar góin tu góu)</span></td>
-            </tr>
-            <tr>
-                <td><b>He / She</b></td>
-                <td><span class="verb-text">He is going to be</span><span class="pronun">(jí is góin tu bi)</span></td>
-                <td><span class="verb-text">He is going to have</span><span class="pronun">(jí is góin tu jav)</span></td>
-                <td><span class="verb-text">He is going to need</span><span class="pronun">(jí is góin tu niid)</span></td>
-                <td><span class="verb-text">He is going to go</span><span class="pronun">(jí is góin tu góu)</span></td>
-            </tr>
-            <tr>
-                <td><b>We</b></td>
-                <td><span class="verb-text">We are going to be</span><span class="pronun">(uí ar góin tu bi)</span></td>
-                <td><span class="verb-text">We are going to have</span><span class="pronun">(uí ar góin tu jav)</span></td>
-                <td><span class="verb-text">We are going to need</span><span class="pronun">(uí ar góin tu niid)</span></td>
-                <td><span class="verb-text">We are going to go</span><span class="pronun">(uí ar góin tu góu)</span></td>
-            </tr>
-            <tr>
-                <td><b>They</b></td>
-                <td><span class="verb-text">They are going to be</span><span class="pronun">(déi ar góin tu bi)</span></td>
-                <td><span class="verb-text">They are going to have</span><span class="pronun">(déi ar góin tu jav)</span></td>
-                <td><span class="verb-text">They are going to need</span><span class="pronun">(déi ar góin tu niid)</span></td>
-                <td><span class="verb-text">They are going to go</span><span class="pronun">(déi ar góin tu góu)</span></td>
-            </tr>
-        </tbody>
-    </table>
+  <h1>Guía Maestra de Verbos Pilares (80/20)</h1>
+  <div class="controls">
+    <div class="seg" id="lang" role="group" aria-label="Idioma"></div>
+    <div class="seg" id="tense" role="group" aria-label="Tiempo"></div>
+    <div class="seg verbs" id="verbs" role="group" aria-label="Verbo"></div>
+  </div>
+  <p class="hint">Toca una celda para escuchar la pronunciación.</p>
+  <h3 id="ttl"></h3>
+  <div class="tbl-wrap"><table><thead id="thead"></thead><tbody id="tbody"></tbody></table></div>
 </div>
+<script>
+const DATA = [{"name": "MÓDULO DE FRANCÉS", "tenses": [{"title": "1. PRESENT (Presente)", "head": ["ÊTRE (Ser/Estar)", "AVOIR (Tener)", "AVOIR BESOIN DE (Necesitar)", "ALLER (Ir)"], "rows": [{"pron": "Je", "cells": [["Je suis", "(ye suí)"], ["J'ai", "(yé)"], ["J'ai besoin de", "(yé besuán de)"], ["Je vais", "(ye vé)"]]}, {"pron": "Tu", "cells": [["Tu es", "(tu é)"], ["Tu as", "(tu a)"], ["Tu as besoin de", "(tu a besuán de)"], ["Tu vas", "(tu va)"]]}, {"pron": "Il / Elle", "cells": [["Il / Elle est", "(il / el é)"], ["Il / Elle a", "(il / el a)"], ["Il / Elle a besoin de", "(il / el a besuán de)"], ["Il / Elle va", "(il / el va)"]]}, {"pron": "Nous", "cells": [["Nous sommes", "(nu som)"], ["Nous avons", "(nuzavón)"], ["Nous avons besoin de", "(nuzavón besuán de)"], ["Nous allons", "(nuzalón)"]]}, {"pron": "Vous", "cells": [["Vous êtes", "(vuzét)"], ["Vous avez", "(vuzavé)"], ["Vous avez besoin de", "(vuzavé besuán de)"], ["Vous allez", "(vuzalé)"]]}, {"pron": "Ils / Elles", "cells": [["Ils / Elles sont", "(il / el son)"], ["Ils / Elles ont", "(ilzon / elzon)"], ["Ils / Elles ont besoin de", "(ilzon / elzon besuán de)"], ["Ils / Elles vont", "(il / el von)"]]}]}, {"title": "2. PASSÉ COMPOSÉ (Pasado)", "head": ["ÊTRE (Fui/Estuve)", "AVOIR (Tuve)", "BESOIN (Necesité)", "ALLER (Fui/Iba)"], "rows": [{"pron": "Je", "cells": [["J'ai été", "(yé eté)"], ["J'ai eu", "(yé u)"], ["J'ai eu besoin de", "(yé u besuán de)"], ["Je suis allé", "(ye suí alé)"]]}, {"pron": "Tu", "cells": [["Tu as été", "(tu a eté)"], ["Tu as eu", "(tu a u)"], ["Tu as eu besoin de", "(tu a u besuán de)"], ["Tu es allé", "(tu é alé)"]]}, {"pron": "Il / Elle", "cells": [["Il / Elle a été", "(il / el a eté)"], ["Il / Elle a eu", "(il / el a u)"], ["Il / Elle a eu besoin de", "(il / el a u besuán de)"], ["Il / Elle est allé", "(il / el é alé)"]]}, {"pron": "Nous", "cells": [["Nous avons été", "(nuzavón eté)"], ["Nous avons eu", "(nuzavón u)"], ["Nous avons eu besoin de", "(nuzavón u besuán de)"], ["Nous somos allés", "(nu som zalé)"]]}, {"pron": "Vous", "cells": [["Vous avez été", "(vuzavé eté)"], ["Vous avez eu", "(vuzavé u)"], ["Vous avez eu besoin de", "(vuzavé u besuán de)"], ["Vous êtes allés", "(vuzét zalé)"]]}, {"pron": "Ils / Elles", "cells": [["Ils / Elles ont été", "(ilzon / elzon eté)"], ["Ils / Elles ont eu", "(ilzon / elzon u)"], ["Ils / Elles ont eu besoin de", "(ilzon / elzon u besuán de)"], ["Ils / Elles sont allés", "(il son talé)"]]}]}, {"title": "3. FUTUR PROCHE (Futuro Fácil)", "head": ["Voy a ser/estar *(Être)*", "Voy a tener *(Avoir)*", "Voy a necesitar *(Besoin)*", "Voy a ir *(Aller)*"], "rows": [{"pron": "Je", "cells": [["Je vais être", "(ye vé etr)"], ["Je vais avoir", "(ye vé avuár)"], ["Je vais avoir besoin de", "(ye vé avuár besuán de)"], ["Je vais aller", "(ye vé alé)"]]}, {"pron": "Tu", "cells": [["Tu vas être", "(tu va etr)"], ["Tu vas avoir", "(tu va avuár)"], ["Tu vas avoir besoin de", "(tu va avuár besuán de)"], ["Tu vas aller", "(tu va alé)"]]}, {"pron": "Il / Elle", "cells": [["Il va être", "(il va etr)"], ["Il va avoir", "(il va avuár)"], ["Il va avoir besoin de", "(il va avuár besuán de)"], ["Il va aller", "(il va alé)"]]}, {"pron": "Nous", "cells": [["Nous allons être", "(nuzalón etr)"], ["Nous allons avoir", "(nuzalón avuár)"], ["Nous allons avoir besoin de", "(nuzalón avuár besuán de)"], ["Nous allons aller", "(nuzalón alé)"]]}, {"pron": "Vous", "cells": [["Vous allez être", "(vuzalé etr)"], ["Vous allez avoir", "(vuzalé avuár)"], ["Vous allez avoir besoin de", "(vuzalé avuár besuán de)"], ["Vous allez aller", "(vuzalé alé)"]]}, {"pron": "Ils / Elles", "cells": [["Ils vont être", "(il von tetr)"], ["Ils vont avoir", "(il von tavuár)"], ["Ils vont avoir besoin de", "(il von tavuár besuán de)"], ["Ils vont aller", "(il von talé)"]]}]}]}, {"name": "MÓDULO DE INGLÉS", "tenses": [{"title": "1. PRESENT (Presente)", "head": ["TO BE (Ser/Estar)", "TO HAVE (Tener)", "TO NEED (Necesitar)", "TO GO (Ir)"], "rows": [{"pron": "I", "cells": [["I am", "(ái am)"], ["I have", "(ái jav)"], ["I need", "(ái niid)"], ["I go", "(ái góu)"]]}, {"pron": "You", "cells": [["You are", "(iú ar)"], ["You have", "(iú jav)"], ["You need", "(iú niid)"], ["You go", "(iú góu)"]]}, {"pron": "He / She", "cells": [["He / She is", "(jí / shí is)"], ["He / She has", "(jí / shí jas)"], ["He / She needs", "(jí / shí niids)"], ["He / She goes", "(jí / shí góus)"]]}, {"pron": "We", "cells": [["We are", "(uí ar)"], ["We have", "(uí jav)"], ["We need", "(uí niid)"], ["We go", "(uí góu)"]]}, {"pron": "They", "cells": [["They are", "(déi ar)"], ["They have", "(déi jav)"], ["They need", "(déi niid)"], ["They go", "(déi góu)"]]}]}, {"title": "2. PAST SIMPLE (Pasado)", "head": ["TO BE (Fui/Estuve)", "TO HAVE (Tuve)", "TO NEED (Necesité)", "TO GO (Fui)"], "rows": [{"pron": "I", "cells": [["I was", "(ái uás)"], ["I had", "(ái jad)"], ["I needed", "(ái níided)"], ["I went", "(ái uént)"]]}, {"pron": "You", "cells": [["You were", "(iú uer)"], ["You had", "(iú jad)"], ["You needed", "(iú níided)"], ["You went", "(iú uént)"]]}, {"pron": "He / She", "cells": [["He / She was", "(jí / shí uás)"], ["He / She had", "(jí / shí jad)"], ["He / She needed", "(jí / shí níided)"], ["He / She went", "(jí / shí uént)"]]}, {"pron": "We", "cells": [["We were", "(uí uer)"], ["We had", "(uí jad)"], ["We needed", "(uí níided)"], ["We went", "(uí uént)"]]}, {"pron": "They", "cells": [["They were", "(déi uer)"], ["They had", "(déi jad)"], ["They needed", "(déi níided)"], ["They went", "(déi uént)"]]}]}, {"title": "3. FUTURE WITH GOING TO (Futuro Fácil)", "head": ["Voy a ser/estar", "Voy a tener", "Voy a necesitar", "Voy a ir"], "rows": [{"pron": "I", "cells": [["I am going to be", "(ái am góin tu bi)"], ["I am going to have", "(ái am góin tu jav)"], ["I am going to need", "(ái am góin tu niid)"], ["I am going to go", "(ái am góin tu góu)"]]}, {"pron": "You", "cells": [["You are going to be", "(iú ar góin tu bi)"], ["You are going to have", "(iú ar góin tu jav)"], ["You are going to need", "(iú ar góin tu niid)"], ["You are going to go", "(iú ar góin tu góu)"]]}, {"pron": "He / She", "cells": [["He is going to be", "(jí is góin tu bi)"], ["He is going to have", "(jí is góin tu jav)"], ["He is going to need", "(jí is góin tu niid)"], ["He is going to go", "(jí is góin tu góu)"]]}, {"pron": "We", "cells": [["We are going to be", "(uí ar góin tu bi)"], ["We are going to have", "(uí ar góin tu jav)"], ["We are going to need", "(uí ar góin tu niid)"], ["We are going to go", "(uí ar góin tu góu)"]]}, {"pron": "They", "cells": [["They are going to be", "(déi ar góin tu bi)"], ["They are going to have", "(déi ar góin tu jav)"], ["They are going to need", "(déi ar góin tu niid)"], ["They are going to go", "(déi ar góin tu góu)"]]}]}]}];
+const LANG_LABELS = ["Français","English"];
+const TENSE_LABELS = ["Presente","Pasado","Futuro"];
+const CAN_SPEAK = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+if (CAN_SPEAK) document.body.classList.add('can-speak');
+const LOCALES = ['fr-FR','en-US'];
+function pickVoice(loc){
+  const vs = speechSynthesis.getVoices(), pre = loc.slice(0,2);
+  return vs.find(v=>v.lang.replace('_','-')===loc) || vs.find(v=>v.lang.toLowerCase().startsWith(pre)) || null;
+}
+// Solo para la voz: "Il / Elle est" -> "Il est" (el texto en pantalla no cambia)
+function speakable(s){ return s.replace(/^(\S+) \/ \S+ /,'$1 '); }
+let lastCell = null;
+function speak(td){
+  speechSynthesis.cancel();
+  if (lastCell) lastCell.classList.remove('speaking');
+  const loc = LOCALES[st.l], u = new SpeechSynthesisUtterance(speakable(td.dataset.say));
+  u.lang = loc; u.rate = 0.85;
+  const v = pickVoice(loc); if (v) u.voice = v;
+  td.classList.add('speaking'); lastCell = td;
+  u.onend = u.onerror = ()=>td.classList.remove('speaking');
+  speechSynthesis.speak(u);
+}
+if (CAN_SPEAK) speechSynthesis.onvoiceschanged = ()=>{};
+let st = {l:0,t:0,v:0};
+try { const s = JSON.parse(localStorage.getItem('verbos-state')||'null'); if (s && DATA[s.l] && DATA[s.l].tenses[s.t]) st = {l:s.l,t:s.t,v:s.v|0}; } catch(e){}
 
+function seg(id, labels, cur, onPick){
+  const box = document.getElementById(id); box.replaceChildren();
+  labels.forEach((txt,i)=>{
+    const b = document.createElement('button'); b.type='button'; b.textContent = txt;
+    b.setAttribute('aria-pressed', i===cur); b.onclick = ()=>onPick(i); box.appendChild(b);
+  });
+}
+function el(tag, cls, text){ const e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
+
+function render(){
+  if (CAN_SPEAK) speechSynthesis.cancel();
+  const T = DATA[st.l].tenses[st.t];
+  if (st.v >= T.head.length) st.v = 0;
+  try { localStorage.setItem('verbos-state', JSON.stringify(st)); } catch(e){}
+  document.documentElement.lang = st.l===0 ? 'fr' : 'en';
+  seg('lang', LANG_LABELS, st.l, i=>{st.l=i; render();});
+  seg('tense', TENSE_LABELS, st.t, i=>{st.t=i; render();});
+  seg('verbs', T.head, st.v, i=>{st.v=i; render();});
+  document.getElementById('ttl').textContent = T.title;
+
+  const thead = document.getElementById('thead'); thead.replaceChildren();
+  const hr = el('tr'); hr.appendChild(el('th',null,'Pron.'));
+  T.head.forEach((h,i)=>hr.appendChild(el('th','col'+(i===st.v?' on':''),h)));
+  thead.appendChild(hr);
+
+  const tb = document.getElementById('tbody'); tb.replaceChildren();
+  T.rows.forEach(r=>{
+    const tr = el('tr'); const td0 = el('td'); td0.appendChild(el('b',null,r.pron)); tr.appendChild(td0);
+    r.cells.forEach((c,i)=>{
+      const td = el('td','col'+(i===st.v?' on':''));
+      td.appendChild(el('span','verb-text',c[0])); td.appendChild(el('span','pronun',c[1]));
+      if (CAN_SPEAK) { td.dataset.say = c[0]; td.tabIndex = 0; td.setAttribute('role','button'); td.setAttribute('aria-label','Escuchar: '+c[0]);
+        td.onclick = ()=>speak(td); td.onkeydown = e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); speak(td);} }; }
+      tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  });
+}
+render();
+</script>
 </body>
 </html>
