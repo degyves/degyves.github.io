@@ -1,5 +1,5 @@
 // Sube CACHE (v1 -> v2...) cada vez que cambies el HTML, para forzar actualización.
-const CACHE = 'verbos-pilares-v1';
+const CACHE = 'verbos-pilares-v2';
 const FILES = ['./', 'fr-eng-01.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png', 'apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
