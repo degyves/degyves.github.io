@@ -16,26 +16,22 @@
     <body>
         <main class="container">
             <header class="hero-section">
-                <h1>Hello I am Tau!</h1>
+                <p class="eyebrow">Victor Polo de Gyves Montero</p>
+                <h1>Hello, I am Tau</h1>
+                <p class="hero-subtitle">Engineering, AI, and Indigenous healing</p>
             </header>
 
+            <div class="section-tabs" role="tablist" aria-label="Explore my work">
+                <button id="engineering-tab" type="button" role="tab" aria-controls="engineering-panel" aria-selected="true">Engineering + AI</button>
+                <button id="healing-tab" type="button" role="tab" aria-controls="healing-panel" aria-selected="false" tabindex="-1">Healing</button>
+            </div>
+
+            <section id="engineering-panel" class="tab-panel" role="tabpanel" aria-labelledby="engineering-tab">
             <section class="cards">
                 <article class="card whoami-card">
                     <h2 id="whoami">Who am I? <a href="#whoami" class="permalink" aria-label="Permalink to Who am I section">#</a></h2>
 
                     <div class="intro-cards-container">
-                        <div class="intro-card">
-                            <div class="profile-image">
-                                <img src="images/tau.jpg" alt="Tau - Indigenous Therapist" height="80" />
-                            </div>
-                            <div class="profile-content">
-                                <p>I am a native indigenous therapist. I have permission to share plant-based therapies and temazcal from my nation.</p>
-                                <a href="https://docs.google.com/document/d/1d7C_5wOov7IF-_XPx1jP6Hx8BWlDMKO0KZzu6eiuC54/edit?usp=sharing" class="ceremony-link">Click here to read the ceremony preparation instructions.</a>
-                <!-->a href="ontologia.html" class="ceremony-link">Click here to read the article: Hacia una Ontología de la Comunión</a>
-                                <a href="ontologia.pdf" class="ceremony-link">Same article, in pdf: Hacia una Ontología de la Comunión</a -->
-                            </div>
-                        </div>
-
                         <div class="intro-card">
                             <div class="profile-image">
                                 <img src="images/photo-small.png" alt="Victor Polo - Software Engineer" height="80" />
@@ -46,14 +42,6 @@
                         </div>
                     </div>
 
-                    <div class="card-content">
-                        <div class="about-text">
-                            <p><strong>I am Tau</strong>, which means "Sun" in Wirarika (nope, I did not choose that name!)</p>
-                            <p><strong>My birth name is Victor Polo de Gyves Montero</strong></p>
-                            <p><strong>You can contact me at:</strong> <a href="mailto:degyves@gmail.com">degyves@gmail.com</a></p>
-                            <p>I was born in an Indigenous community in Oaxaca, where I learned healing. I studied computer science. I work in computing and also share Indigenous therapy in my free time. I enjoy dancing, cooking, and nagual-like practices in the mountains!</p>
-                        </div>
-                    </div>
                 </article>
 
                 <article class="card portfolio-card">
@@ -174,6 +162,28 @@
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                </article>
+            </section>
+            </section>
+
+            <section id="healing-panel" class="tab-panel" role="tabpanel" aria-labelledby="healing-tab" hidden>
+                <article class="card healing-card">
+                    <h2 id="healing">Healing <a href="#healing" class="permalink" aria-label="Permalink to Healing section">#</a></h2>
+                    <div class="intro-card">
+                        <div class="profile-image">
+                            <img src="images/tau.jpg" alt="Tau - Indigenous Therapist" height="80" />
+                        </div>
+                        <div class="profile-content">
+                            <p>I am a native Indigenous therapist. I have permission to share plant-based therapies and temazcal from my nation.</p>
+                            <a href="https://docs.google.com/document/d/1d7C_5wOov7IF-_XPx1jP6Hx8BWlDMKO0KZzu6eiuC54/edit?usp=sharing" class="ceremony-link">Read the ceremony preparation instructions</a>
+                        </div>
+                    </div>
+                    <div class="about-text">
+                        <p><strong>I am Tau</strong>, which means "Sun" in Wirarika (nope, I did not choose that name!).</p>
+                        <p><strong>My birth name is Victor Polo de Gyves Montero.</strong></p>
+                        <p><strong>You can contact me at:</strong> <a href="mailto:degyves@gmail.com">degyves@gmail.com</a></p>
+                        <p>I was born in an Indigenous community in Oaxaca, where I learned healing. I studied computer science. I work in computing and also share Indigenous therapy in my free time. I enjoy dancing, cooking, and nagual-like practices in the mountains!</p>
                     </div>
                 </article>
             </section>

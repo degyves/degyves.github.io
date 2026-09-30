@@ -587,3 +587,222 @@ a {
     transition: none;
   }
 }
+
+/* Main page layout follows the clean, compact style of the language guide. */
+body {
+  background: #f4f7f6;
+  color: #333;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1140px;
+  padding: 1.5rem;
+}
+
+.hero-section,
+.card,
+.site-footer {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  backdrop-filter: none;
+}
+
+.hero-section {
+  padding: 1.75rem 1rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-section .eyebrow {
+  margin: 0 0 0.35rem;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+}
+
+.hero-section h1 {
+  color: #2c3e50;
+  font-size: clamp(2rem, 5vw, 2.6rem);
+  text-shadow: none;
+}
+
+.hero-subtitle {
+  margin: 0.35rem 0 0;
+  color: #7f8c8d;
+}
+
+.section-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.4rem;
+  background: #eaf2f8;
+  border-radius: 10px;
+}
+
+.section-tabs button {
+  flex: 1;
+  min-height: 2.75rem;
+  padding: 0.65rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: #2c3e50;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.section-tabs button[aria-selected="true"] {
+  background: #2980b9;
+  color: #fff;
+}
+
+.section-tabs button:focus-visible {
+  outline: 3px solid #3498db;
+  outline-offset: 2px;
+}
+
+.tab-panel[hidden] {
+  display: none;
+}
+
+.cards {
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card {
+  padding: 1.75rem;
+  transition: none;
+}
+
+.card:hover {
+  transform: none;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.card h2 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  font-size: 1.75rem;
+  text-shadow: none;
+}
+
+.card h3 {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+}
+
+.intro-cards-container {
+  margin-bottom: 0;
+}
+
+.intro-card,
+.whoami-card .intro-card,
+.about-text {
+  background: #f9fbfb;
+  border: 1px solid #e0e0e0;
+}
+
+.intro-card {
+  padding: 1.25rem;
+  border-radius: 10px;
+}
+
+.profile-content p {
+  font-size: 1rem;
+}
+
+.healing-card .intro-card {
+  margin-bottom: 1rem;
+}
+
+.about-text {
+  border-radius: 10px;
+}
+
+.ceremony-link {
+  background: #2980b9;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.ceremony-link:hover {
+  background: #216a99;
+  box-shadow: none;
+}
+
+a:link {
+  color: #2980b9;
+}
+
+a:visited {
+  color: #21618c;
+}
+
+a:hover {
+  color: #1f618d;
+}
+
+.site-footer {
+  margin-top: 1rem;
+}
+
+.scrollers {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0.75rem;
+  }
+
+  .hero-section {
+    padding: 1.35rem 0.75rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .cards {
+    gap: 0.75rem;
+  }
+
+  .intro-card {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .social-links li {
+    flex-direction: row;
+    text-align: left;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .section-tabs {
+    gap: 0.25rem;
+  }
+
+  .section-tabs button {
+    padding: 0.6rem 0.35rem;
+    font-size: 0.95rem;
+  }
+
+  .intro-card {
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
+  .profile-image img {
+    width: 64px;
+    height: 64px;
+  }
+}
