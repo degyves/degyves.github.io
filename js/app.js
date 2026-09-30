@@ -68,6 +68,35 @@ document.onscroll = function() {
     }
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    var tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+    if (!tabs.length) return;
 
+    function activateTab(tab, moveFocus) {
+        tabs.forEach(function(item) {
+            var selected = item === tab;
+            item.setAttribute('aria-selected', selected);
+            item.tabIndex = selected ? 0 : -1;
+            document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
+        });
+        if (moveFocus) tab.focus();
+    }
+
+    tabs.forEach(function(tab, index) {
+        tab.addEventListener('click', function() {
+            activateTab(tab, false);
+        });
+        tab.addEventListener('keydown', function(event) {
+            var nextIndex;
+            if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+            else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+            else if (event.key === 'Home') nextIndex = 0;
+            else if (event.key === 'End') nextIndex = tabs.length - 1;
+            else return;
+            event.preventDefault();
+            activateTab(tabs[nextIndex], true);
+        });
+    });
+});
 
 
